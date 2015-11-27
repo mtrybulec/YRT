@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{56af7a6b-3d5f-43b5-81fe-8f5833dbb983}</ProjectGuid>
+    <ProjectType>CppVCLApplication</ProjectType>
+    <MainSource>YRT.cpp</MainSource>
+    <Config Condition="'$(Config)'==''">Debug Build</Config>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
+    <Base>true</Base>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Debug Build' or '$(Cfg_1)'!=''">
+    <Base>true</Base>
+    <Cfg_1>true</Cfg_1>
+    <CfgParent>Base</CfgParent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Config)'=='Release Build' or '$(Cfg_2)'!=''">
+    <Base>true</Base>
+    <Cfg_2>true</Cfg_2>
+    <CfgParent>Base</CfgParent>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Base)'!=''">
+    <OutputExt>exe</OutputExt>
+    <DCC_Optimize>false</DCC_Optimize>
+    <BCC_OptimizeForSpeed>true</BCC_OptimizeForSpeed>
+    <DCC_CBuilderOutput>JPHNE</DCC_CBuilderOutput>
+    <BCC_OutputDir>..\Bin\</BCC_OutputDir>
+    <ILINK_FullDebugInfo>true</ILINK_FullDebugInfo>
+    <DynamicRTL>true</DynamicRTL>
+    <BCC_InstructionSet>6</BCC_InstructionSet>
+    <BRCC_OutputDir>..\Bin\</BRCC_OutputDir>
+    <ILINK_AppType>Windows</ILINK_AppType>
+    <UsePackages>true</UsePackages>
+    <BCC_DebugLineNumbers>true</BCC_DebugLineNumbers>
+    <BCC_GenerateWindowsApp>true</BCC_GenerateWindowsApp>
+    <DCC_MakeModifiedUnits>true</DCC_MakeModifiedUnits>
+    <BCC_ZeroLengthEmptyMemberFuncs>true</BCC_ZeroLengthEmptyMemberFuncs>
+    <FinalOutputDir>.</FinalOutputDir>
+    <PackageImports>vclx.bpi;rtl.bpi;vcl.bpi;dbrtl.bpi;vcldb.bpi;bdertl.bpi;vcldbx.bpi;bcbsmp.bpi</PackageImports>
+    <TASM_AdditionalSwitches> /w2 ..\Bin\</TASM_AdditionalSwitches>
+    <DCC_UnitSearchPath>.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_UnitSearchPath>
+    <BCC_AssemblerOptions>kh30000</BCC_AssemblerOptions>
+    <BRCC_UserSuppliedOptions> -I..\..\..\raytracer\0.00.003 - background\source;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</BRCC_UserSuppliedOptions>
+    <BCC_StackFrames>true</BCC_StackFrames>
+    <BCC_GenerateMultithreaded>true</BCC_GenerateMultithreaded>
+    <DCC_DcuOutput>..\Bin\</DCC_DcuOutput>
+    <BCC_PCHCache>true</BCC_PCHCache>
+    <BCC_IntegerSizedEnums>false</BCC_IntegerSizedEnums>
+    <DCC_IncludePath>.\;$(BDS)\lib;$(BDS)\lib\obj</DCC_IncludePath>
+    <BRCC_IncludePath>..\..\..\raytracer\0.00.003 - background\source;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</BRCC_IncludePath>
+    <AllPackageLibs>rtl.lib;vcl.lib</AllPackageLibs>
+    <TASM_IncludePath>..\..\..\raytracer\0.00.003 - background\source;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</TASM_IncludePath>
+    <BCC_IncludePath>..\..\..\raytracer\0.00.003 - background\source;$(BDS)\include;$(BDS)\include\vcl;$(BDS)\include\dinkumware</BCC_IncludePath>
+    <ILINK_LibraryPath>..\..\..\raytracer\0.00.003 - background\source;$(BDS)\lib\obj;$(BDS)\lib</ILINK_LibraryPath>
+    <BCC_ZeroLengthEmptyBaseClass>true</BCC_ZeroLengthEmptyBaseClass>
+    <Multithreaded>true</Multithreaded>
+    <TASM_Defines>NO_STRICT;_RTLDLL;USEPACKAGES</TASM_Defines>
+    <BRCC_Defines>NO_STRICT;_RTLDLL;USEPACKAGES</BRCC_Defines>
+    <DCC_ObjOutput>..\Bin\</DCC_ObjOutput>
+    <BCC_Defines>NO_STRICT</BCC_Defines>
+    <BCC_SourceDebuggingOn>true</BCC_SourceDebuggingOn>
+    <DCC_SymbolReferenceInfo>2</DCC_SymbolReferenceInfo>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Cfg_1)'!=''">
+    <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+    <BCC_InlineFunctionExpansion>false</BCC_InlineFunctionExpansion>
+    <ILINK_DisableIncrementalLinking>true</ILINK_DisableIncrementalLinking>
+    <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+    <FinalOutputDir>..\Exec</FinalOutputDir>
+    <IntermediateOutputDir>Debug_Build</IntermediateOutputDir>
+    <TASM_DisplaySourceLines>true</TASM_DisplaySourceLines>
+    <BCC_wpar>false</BCC_wpar>
+    <ILINK_BpiLibOutputDir>..\Bin</ILINK_BpiLibOutputDir>
+    <ILINK_LibraryPath>$(BDS)\lib\debug;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+    <BCC_DisableOptimizations>true</BCC_DisableOptimizations>
+    <BCC_Defines>_DEBUG;$(BCC_Defines)</BCC_Defines>
+    <TASM_Debugging>Full</TASM_Debugging>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Cfg_2)'!=''">
+    <DCC_Optimize>true</DCC_Optimize>
+    <DCC_DebugInformation>false</DCC_DebugInformation>
+    <IntermediateOutputDir>Release_Build</IntermediateOutputDir>
+    <BCC_StackFrames>false</BCC_StackFrames>
+    <ILINK_LibraryPath>$(BDS)\lib\release;$(ILINK_LibraryPath)</ILINK_LibraryPath>
+    <BCC_Defines>NDEBUG;$(BCC_Defines)</BCC_Defines>
+    <TASM_Debugging>None</TASM_Debugging>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <Borland.Personality>CPlusPlusBuilder.Personality</Borland.Personality>
+    <Borland.ProjectType>CppVCLApplication</Borland.ProjectType>
+    <BorlandProject>
+<BorlandProject><CPlusPlusBuilder.Personality><VersionInfo><VersionInfo Name="IncludeVerInfo">False</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">1</VersionInfo><VersionInfo Name="MinorVer">0</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">0</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">1045</VersionInfo><VersionInfo Name="CodePage">1250</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName"></VersionInfoKeys><VersionInfoKeys Name="FileDescription"></VersionInfoKeys><VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="InternalName"></VersionInfoKeys><VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys><VersionInfoKeys Name="ProductName"></VersionInfoKeys><VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="Comments"></VersionInfoKeys></VersionInfoKeys><HistoryLists_hlFinalOutputDir><HistoryLists_hlFinalOutputDir Name="Count">1</HistoryLists_hlFinalOutputDir><HistoryLists_hlFinalOutputDir Name="Item0">..\Exec</HistoryLists_hlFinalOutputDir></HistoryLists_hlFinalOutputDir><HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Count">1</HistoryLists_hlILINK_LibraryPath><HistoryLists_hlILINK_LibraryPath Name="Item0">$(BDS)\lib\debug;..\..\..\raytracer\0.00.003 - background\source;$(BDS)\lib\obj;$(BDS)\lib</HistoryLists_hlILINK_LibraryPath></HistoryLists_hlILINK_LibraryPath><HistoryLists_hlIntermediateOutputDir><HistoryLists_hlIntermediateOutputDir Name="Count">1</HistoryLists_hlIntermediateOutputDir><HistoryLists_hlIntermediateOutputDir Name="Item0">Debug_Build</HistoryLists_hlIntermediateOutputDir></HistoryLists_hlIntermediateOutputDir><HistoryLists_hlILINK_BpiLibOutputDir><HistoryLists_hlILINK_BpiLibOutputDir Name="Count">1</HistoryLists_hlILINK_BpiLibOutputDir><HistoryLists_hlILINK_BpiLibOutputDir Name="Item0">..\Bin</HistoryLists_hlILINK_BpiLibOutputDir></HistoryLists_hlILINK_BpiLibOutputDir><Debugging><Debugging Name="DebugSourceDirs"></Debugging></Debugging><Parameters><Parameters Name="RunParams"></Parameters><Parameters Name="Launcher"></Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="DebugCWD"></Parameters><Parameters Name="HostApplication"></Parameters><Parameters Name="RemoteHost"></Parameters><Parameters Name="RemotePath"></Parameters><Parameters Name="RemoteParams"></Parameters><Parameters Name="RemoteLauncher"></Parameters><Parameters Name="UseRemoteLauncher">False</Parameters><Parameters Name="RemoteCWD"></Parameters><Parameters Name="RemoteDebug">False</Parameters><Parameters Name="Debug Symbols Search Path"></Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><Linker><Linker Name="LibPrefix"></Linker><Linker Name="LibSuffix"></Linker><Linker Name="LibVersion"></Linker></Linker><ProjectProperties><ProjectProperties Name="AutoShowDeps">False</ProjectProperties><ProjectProperties Name="ManagePaths">True</ProjectProperties><ProjectProperties Name="VerifyPackages">True</ProjectProperties></ProjectProperties><Source><Source Name="MainSource">YRT.cpp</Source></Source></CPlusPlusBuilder.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildBinPath)\Borland.Cpp.Targets" />
+  <ItemGroup>
+    <CppCompile Include="YRT.cpp">
+      <BuildOrder>0</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="YRTEngine.cpp">
+      <DependentOn>YRTEngine.h</DependentOn>
+      <BuildOrder>6</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="YRTMain.cpp">
+      <Form>YRTMainForm</Form>
+      <DependentOn>YRTMain.h</DependentOn>
+      <BuildOrder>2</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="YRTRay.cpp">
+      <DependentOn>YRTRay.h</DependentOn>
+      <BuildOrder>8</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="YRTScene.cpp">
+      <DependentOn>YRTScene.h</DependentOn>
+      <BuildOrder>7</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="YRTShape.cpp">
+      <DependentOn>YRTShape.h</DependentOn>
+      <BuildOrder>3</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="YRTTracer.cpp">
+      <DependentOn>YRTTracer.h</DependentOn>
+      <BuildOrder>10</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="YRTTriangle.cpp">
+      <DependentOn>YRTTriangle.h</DependentOn>
+      <BuildOrder>5</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="YRTUtils.cpp">
+      <DependentOn>YRTUtils.h</DependentOn>
+      <BuildOrder>9</BuildOrder>
+    </CppCompile>
+    <CppCompile Include="YRTVector.cpp">
+      <DependentOn>YRTVector.h</DependentOn>
+      <BuildOrder>4</BuildOrder>
+    </CppCompile>
+    <ResFiles Include="YRT.res">
+      <BuildOrder>1</BuildOrder>
+    </ResFiles>
+    <FormResources Include="YRTMain.dfm" />
+    <BuildConfiguration Include="Debug Build">
+      <Key>Cfg_1</Key>
+    </BuildConfiguration>
+    <BuildConfiguration Include="Release Build">
+      <Key>Cfg_2</Key>
+    </BuildConfiguration>
+  </ItemGroup>
+</Project>
