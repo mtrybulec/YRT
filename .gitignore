@@ -1,0 +1,7 @@
+*.dsk
+*.local
+
+Bin/
+Debug_Build/
+Exec/
+__history/
