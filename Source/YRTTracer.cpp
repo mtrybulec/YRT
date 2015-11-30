@@ -61,9 +61,9 @@ void __fastcall TYRTTracer::Execute()
                         }
                     }
 
-                    r += colorMin % 256;
+                    r += (colorMin / 256) / 256;
                     g += (colorMin / 256) % 256;
-                    b += (colorMin / 256) / 256;
+                    b += colorMin % 256;
                 }
 
             // Draw the pixel in the color of the closest object:
