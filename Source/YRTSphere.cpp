@@ -17,11 +17,17 @@ bool TYRTSphere::GetIntersection(TYRTRay *ray, TYRTVector *point, TColor *color)
     if (d >= 0)
     {
         d = sqrt(d);
-        double t = b - d;
-        if (t < 0)
-            t = -b - d;
-        if (t < 0)
+        float t;
+        float t1 = -b + d;
+        float t2 = -b - d;
+        if (t1 < 0 && t2 < 0)
             return false;
+        if (t1 < 0)
+            t = t2;
+        else if (t2 < 0)
+            t = t1;
+        else
+            t = (t1 < t2 ? t1 : t2);
 
         *point = ray->Start + (t / 2) * ray->Dir;
         *color = Color;
