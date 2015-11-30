@@ -13,7 +13,7 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
         Application->Initialize();
         Application->Title = title;
         Application->CreateForm(__classid(TYRTMainForm), &YRTMainForm);
-        Application->Run();
+         Application->Run();
     }
     catch(Exception &exception)
     {

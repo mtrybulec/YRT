@@ -13,7 +13,10 @@ public:
     TYRTScene(void);
     ~TYRTScene(void);
     void GenerateExample_01Triangles(int width, int height);
+    void GenerateExample_02Atom(int width, int height);
     int GetCount(void);
+    void Move(float dx, float dy, float dz);
+    void Zoom(float factor);
     TYRTShape* GetShape(int index);
 };
 

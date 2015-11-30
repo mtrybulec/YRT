@@ -50,8 +50,15 @@ bool TYRTTriangle::GetIntersection(TYRTRay *ray, TYRTVector *point, TColor *colo
             return false;
     }
 
-    *color = this->Color;
+    *color = Color;
     return true;
+}
+
+void TYRTTriangle::Move(float dx, float dy, float dz)
+{
+    Points[0].Move(dx, dy, dz);
+    Points[1].Move(dx, dy, dz);
+    Points[2].Move(dx, dy, dz);
 }
 
 void TYRTTriangle::RunPrecalculations(void)
@@ -68,5 +75,12 @@ void TYRTTriangle::RunPrecalculations(void)
     _vv = dot(_v, _v);
 
     _d = _uv * _uv - _uu * _vv;
+}
+
+void TYRTTriangle::Zoom(float factor)
+{
+    Points[0].Zoom(factor);
+    Points[1].Zoom(factor);
+    Points[2].Zoom(factor);
 }
 

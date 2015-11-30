@@ -1,6 +1,7 @@
 #include <math.h>
 
 #include "YRTScene.h"
+#include "YRTSphere.h"
 #include "YRTTriangle.h"
 #include "YRTUtils.h"
 
@@ -66,6 +67,33 @@ void TYRTScene::GenerateExample_01Triangles(int width, int height)
     }
 }
 
+void TYRTScene::GenerateExample_02Atom(int width, int height)
+{
+    TYRTSphere *sphere;
+
+    sphere = new TYRTSphere;
+    sphere->Center = TYRTVector(0, 0, 0);
+    sphere->Radius = 10;
+    sphere->Color = clBlue;
+    _shapes->Add(sphere);
+
+    sphere = new TYRTSphere;
+    sphere->Center = TYRTVector(-5, -5, -3);
+    sphere->Radius = 6;
+    sphere->Color = clRed;
+    _shapes->Add(sphere);
+
+    sphere = new TYRTSphere;
+    sphere->Center = TYRTVector(+5, -5, +3);
+    sphere->Radius = 6;
+    sphere->Color = clRed;
+    _shapes->Add(sphere);
+
+    // Zoom/move elements into view:
+    Zoom(10);
+    Move(width / 2, height / 2, 0);
+}
+
 int TYRTScene::GetCount(void)
 {
     if (_shapes)
@@ -83,5 +111,23 @@ TYRTShape* TYRTScene::GetShape(int index)
             return NULL;
     else
         return NULL;
+}
+
+void TYRTScene::Move(float dx, float dy, float dz)
+{
+    for (int i = 0; i < _shapes->Count; i++)
+    {
+        TYRTShape *shape = (TYRTShape*)_shapes->Items[i];
+        shape->Move(dx, dy, dz);
+    }
+}
+
+void TYRTScene::Zoom(float factor)
+{
+    for (int i = 0; i < _shapes->Count; i++)
+    {
+        TYRTShape *shape = (TYRTShape*)_shapes->Items[i];
+        shape->Zoom(factor);
+    }
 }
 

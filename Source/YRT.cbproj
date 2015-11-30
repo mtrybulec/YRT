@@ -117,6 +117,10 @@
       <DependentOn>YRTShape.h</DependentOn>
       <BuildOrder>3</BuildOrder>
     </CppCompile>
+    <CppCompile Include="YRTSphere.cpp">
+      <DependentOn>YRTSphere.h</DependentOn>
+      <BuildOrder>11</BuildOrder>
+    </CppCompile>
     <CppCompile Include="YRTTracer.cpp">
       <DependentOn>YRTTracer.h</DependentOn>
       <BuildOrder>10</BuildOrder>

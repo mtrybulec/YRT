@@ -48,6 +48,20 @@ bool TYRTVector::IsNearZero(void)
     return fabs(X) < EPSILON && fabs(Y) < EPSILON && fabs(Z) < EPSILON;
 }
 
+void TYRTVector::Move(float dx, float dy, float dz)
+{
+    X += dx;
+    Y += dy;
+    Z += dz;
+}
+
+void TYRTVector::Zoom(float factor)
+{
+    X *= factor;
+    Y *= factor;
+    Z *= factor;
+}
+
 bool operator == (const TYRTVector& v1, const TYRTVector& v2)
 {
     return (v1.X == v2.X) && (v1.Y == v2.Y) && (v1.Z == v2.Z);

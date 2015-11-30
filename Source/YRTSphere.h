@@ -1,19 +1,18 @@
-#ifndef YRTTriangleH
-#define YRTTriangleH
+#ifndef YRTSphereH
+#define YRTSphereH
 
 #include <vcl.h>
 
 #include "YRTShape.h"
 
-class TYRTTriangle : public TYRTShape
+class TYRTSphere : public TYRTShape
 {
 private:
-    bool _isDegenerate;
-    TYRTVector _u, _v, _norm;
-    float _uu, _uv, _vv, _d;
+    float _radiusSqr;
 public:
     TColor Color;
-    TYRTVector Points[3];
+    TYRTVector Center;
+    float Radius;
     virtual bool GetIntersection(TYRTRay *ray, TYRTVector *point, TColor *color);
     virtual void Move(float dx, float dy, float dz);
     virtual void RunPrecalculations(void);

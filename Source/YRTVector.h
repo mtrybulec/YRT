@@ -14,6 +14,8 @@ public:
     float GetDistance(TYRTVector& arg);
     float GetDistanceSqr(TYRTVector& arg);
     bool IsNearZero(void);
+    void Move(float dx, float dy, float dz);
+    void Zoom(float factor);
     friend bool operator == (const TYRTVector& v1, const TYRTVector& v2);
 };
 
