@@ -94,6 +94,117 @@ void TYRTScene::GenerateExample_02Atom(int width, int height)
     Move(width / 2, height / 2, 0);
 }
 
+void TYRTScene::GenerateExample_03StarShip(float x, float y, float z)
+{
+    TYRTTriangle *triangle;
+    TYRTSphere *sphere;
+    int index = _shapes->Count;
+
+    // Bottom:
+    triangle = new TYRTTriangle;
+    triangle->Points[0] = TYRTVector( 0, -1,   0);
+    triangle->Points[1] = TYRTVector(-3,  0,  -1);
+    triangle->Points[2] = TYRTVector( 0,  0, -10);
+    triangle->Color = (TColor)RGB(190, 190, 190);
+    _shapes->Add(triangle);
+    triangle = new TYRTTriangle;
+    triangle->Points[0] = TYRTVector(0, -1,   0);
+    triangle->Points[1] = TYRTVector(3,  0,  -1);
+    triangle->Points[2] = TYRTVector(0,  0, -10);
+    triangle->Color = (TColor)RGB(190, 190, 190);
+    _shapes->Add(triangle);
+    // Top:
+    triangle = new TYRTTriangle;
+    triangle->Points[0] = TYRTVector( 0, 1,   0);
+    triangle->Points[1] = TYRTVector(-3, 0,  -1);
+    triangle->Points[2] = TYRTVector( 0, 0, -10);
+    triangle->Color = (TColor)RGB(190, 190, 190);
+    triangle->Move(0, 0.1, 0);
+    _shapes->Add(triangle);
+    triangle = new TYRTTriangle;
+    triangle->Points[0] = TYRTVector(0, 1,   0);
+    triangle->Points[1] = TYRTVector(3, 0,  -1);
+    triangle->Points[2] = TYRTVector(0, 0, -10);
+    triangle->Color = (TColor)RGB(190, 190, 190);
+    triangle->Move(0, 0.1, 0);
+    _shapes->Add(triangle);
+    // Sides:
+    triangle = new TYRTTriangle;
+    triangle->Points[0] = TYRTVector(-3.0 + 1.0/6, 0.0 - 1.0/18, -1.0);
+    triangle->Points[1] = TYRTVector(-3.0 + 1.0/6, 0.1 + 1.0/18, -1.0);
+    triangle->Points[2] = TYRTVector(           0,            0, -9.5);
+    triangle->Color = (TColor)RGB(127, 127, 127);
+    _shapes->Add(triangle);
+    triangle = new TYRTTriangle;
+    triangle->Points[0] = TYRTVector(-3.0 + 1.0/6, 0.1 + 1.0/18, -1.0);
+    triangle->Points[1] = TYRTVector(           0,          0.1, -9.5);
+    triangle->Points[2] = TYRTVector(           0,          0.0, -9.5);
+    triangle->Color = (TColor)RGB(127, 127, 127);
+    _shapes->Add(triangle);
+    triangle = new TYRTTriangle;
+    triangle->Points[0] = TYRTVector( 3.0 - 1.0/6, 0.0 - 1.0/18, -1.0);
+    triangle->Points[1] = TYRTVector( 3.0 - 1.0/6, 0.1 + 1.0/18, -1.0);
+    triangle->Points[2] = TYRTVector(           0,            0, -9.5);
+    triangle->Color = (TColor)RGB(127, 127, 127);
+    _shapes->Add(triangle);
+    triangle = new TYRTTriangle;
+    triangle->Points[0] = TYRTVector( 3.0 - 1.0/6, 0.1 + 1.0/18, -1.0);
+    triangle->Points[1] = TYRTVector(           0,          0.1, -9.5);
+    triangle->Points[2] = TYRTVector(           0,          0.0, -9.5);
+    triangle->Color = (TColor)RGB(127, 127, 127);
+    _shapes->Add(triangle);
+    // Bridge:
+    triangle = new TYRTTriangle;
+    triangle->Points[0] = TYRTVector(-1.0, 0.0, -1.0);
+    triangle->Points[1] = TYRTVector(-0.5, 1.5, -1.0);
+    triangle->Points[2] = TYRTVector( 0.5, 1.5, -1.0);
+    triangle->Color = (TColor)RGB(127, 127, 127);
+    _shapes->Add(triangle);
+    triangle = new TYRTTriangle;
+    triangle->Points[0] = TYRTVector( 1.0, 0.0, -1.0);
+    triangle->Points[1] = TYRTVector(-1.0, 0.0, -1.0);
+    triangle->Points[2] = TYRTVector( 0.5, 1.5, -1.0);
+    triangle->Color = (TColor)RGB(127, 127, 127);
+    _shapes->Add(triangle);
+    // Bottom generator:
+    sphere = new TYRTSphere;
+    sphere->Center = TYRTVector(0, -0.45, -2.5);
+    sphere->Radius = 0.5;
+    sphere->Color = (TColor)RGB(212, 212, 212);
+    _shapes->Add(sphere);
+    // Top generators:
+    sphere = new TYRTSphere;
+    sphere->Center = TYRTVector(-0.5 + 0.1, 1.6, -1.0);
+    sphere->Radius = 0.1;
+    sphere->Color = (TColor)RGB(190, 190, 190);
+    _shapes->Add(sphere);
+    sphere = new TYRTSphere;
+    sphere->Center = TYRTVector( 0.5 - 0.1, 1.6, -1.0);
+    sphere->Radius = 0.1;
+    sphere->Color = (TColor)RGB(190, 190, 190);
+    _shapes->Add(sphere);
+
+    for (int i = index; i < _shapes->Count; i++)
+    {
+        TYRTShape *shape = (TYRTShape*)_shapes->Items[i];
+        shape->Move(x, y, z);
+    }
+}
+
+void TYRTScene::GenerateExample_03StarShips(int width, int height)
+{
+    GenerateExample_03StarShip(0, 0, 0);
+    GenerateExample_03StarShip(10, 4, 1);
+    GenerateExample_03StarShip(-1, 6, 14);
+
+    for (int i = 0; i < _shapes->Count; i++)
+    {
+        TYRTShape *shape = (TYRTShape*)_shapes->Items[i];
+        shape->Zoom(30);
+        shape->Move(170, 150, 100);
+    }
+}
+
 int TYRTScene::GetCount(void)
 {
     if (_shapes)
