@@ -29,7 +29,7 @@ bool TYRTSphere::GetIntersection(TYRTRay *ray, TYRTVector *point, TColor *color)
         else
             t = (t1 < t2 ? t1 : t2);
 
-        *point = ray->Start + (t / 2) * ray->Dir;
+        *point = ray->Start + (t / (2 * a)) * ray->Dir;
         *color = Color;
 
         return true;
