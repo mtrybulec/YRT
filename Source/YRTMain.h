@@ -25,7 +25,7 @@ __published:
     TEdit *AntiAliasingYEdit;
     TUpDown *AntiAliasingYUpDown;
     TLabel *TimeLabel;
-    TLabel *ProgressLabel;
+    TProgressBar *ProgressBar;
     void __fastcall FormCreate(TObject *sender);
     void __fastcall RenderButtonClick(TObject *sender);
 private:
@@ -34,6 +34,7 @@ private:
     Graphics::TBitmap *_bitmap;
     TDateTime _startTime, _endTime;
     TDateTime GetRenderTime(void);
+    bool _isRendering;
     void __fastcall RenderingDone(TObject* sender);
     void UpdateProgress(int y);
     void UpdateWindow(void);

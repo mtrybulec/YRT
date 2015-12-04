@@ -11,7 +11,7 @@ struct TRGB {
 
 __fastcall TYRTTracer::TYRTTracer(TYRTScene *scene, Graphics::TBitmap *bitmap,
     TYRTRay eye, int antiAliasingX, int antiAliasingY,
-    TYRTEngineUpdateFunc updateFunc) : TThread(true)
+    TYRTTracerUpdateFunc updateFunc) : TThread(true)
 {
     _scene = scene;
     _bitmap = bitmap;
@@ -36,6 +36,11 @@ void __fastcall TYRTTracer::Execute()
             for (int ax = 0; ax < _antiAliasingX; ax++)
                 for (int ay = 0; ay < _antiAliasingY; ay++)
                 {
+                    if (Terminated)
+                    {
+                        return;
+                    }
+
                     // Set the .x and .y components of the ray from the "eye" to the pixel (x, y):
                     _eye.Dir.X = -_eye.Start.X + x + (ax - 0.5) / _antiAliasingX;
                     _eye.Dir.Y = +_eye.Start.Y - y - (ay - 0.5) / _antiAliasingY;

@@ -17,11 +17,14 @@ TYRTScene::~TYRTScene(void)
     delete _shapes;
 }
 
+void TYRTScene::Clear()
+{
+    _shapes->Clear();
+}
+
 void TYRTScene::GenerateExample_01Triangles(int width, int height)
 {
     TYRTTriangle *triangle;
-
-    _shapes->Clear();
 
     float y = width / 12;
     float z = width / 6;

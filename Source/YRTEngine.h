@@ -4,15 +4,17 @@
 #include <Graphics.hpp>
 
 #include "YRTScene.h"
-
-typedef void (__closure *TYRTEngineUpdateFunc) (int);
+#include "YRTTracer.h"
 
 class TYRTEngine
 {
+private:
+    TYRTTracer* _tracer;
 public:
     void RenderScene(TYRTScene *scene, Graphics::TBitmap *bitmap,
         int antiAliasingX, int antiAliasingY,
-        TYRTEngineUpdateFunc updateFunc, TNotifyEvent terminatedFunc);
+        TYRTTracerUpdateFunc updateFunc, TNotifyEvent terminatedFunc);
+    void Stop();    
 };
 
 #endif

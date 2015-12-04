@@ -7,7 +7,10 @@
 #pragma hdrstop
 #pragma resource "*.dfm"
 
+#define RenderButtonCaption "&Render"
+
 TYRTMainForm *YRTMainForm;
+
 
 __fastcall TYRTMainForm::TYRTMainForm(TComponent* owner) : TForm(owner)
 {
@@ -16,7 +19,7 @@ __fastcall TYRTMainForm::TYRTMainForm(TComponent* owner) : TForm(owner)
 
 void __fastcall TYRTMainForm::FormCreate(TObject *sender)
 {
-    ProgressLabel->Caption = "";
+    RenderButton->Caption = RenderButtonCaption;
     TimeLabel->Caption = "";
 
     // Make sure that SceneImage is a bitmap:
@@ -26,6 +29,7 @@ void __fastcall TYRTMainForm::FormCreate(TObject *sender)
     _bitmap->PixelFormat = pf24bit;
 
     SceneImage->Picture->Assign(_bitmap);
+    _isRendering = false;
 
     // Some examples use randomization to generate shapes:
     randomize();
@@ -38,28 +42,45 @@ TDateTime TYRTMainForm::GetRenderTime(void)
 
 void __fastcall TYRTMainForm::RenderButtonClick(TObject *sender)
 {
-//    _scene.GenerateExample_01Triangles(_bitmap->Width, _bitmap->Height);
-//    _scene.GenerateExample_02Atom(_bitmap->Width, _bitmap->Height);
-    _scene.GenerateExample_03StarShips(_bitmap->Width, _bitmap->Height);
-    _startTime = TDateTime::CurrentTime();
+    if (_isRendering)
+    {
+        if (Application->MessageBox("Rendering in progress.\nStop?", "Confirm", MB_ICONWARNING | MB_YESNO) == ID_YES)
+        {
+            _engine.Stop();
+        }
+    }
+    else
+    {
+        _scene.Clear();
+        // _scene.GenerateExample_01Triangles(_bitmap->Width, _bitmap->Height);
+        // _scene.GenerateExample_02Atom(_bitmap->Width, _bitmap->Height);
+        _scene.GenerateExample_03StarShips(_bitmap->Width, _bitmap->Height);
 
-    _engine.RenderScene(&_scene, _bitmap,
-        StrToInt(AntiAliasingXEdit->Text), StrToInt(AntiAliasingYEdit->Text), UpdateProgress, RenderingDone);
+        _startTime = TDateTime::CurrentTime();
+        RenderButton->Caption = "Cancel";
+        RenderButton->Cancel = true;
+
+        _isRendering = true;
+        _engine.RenderScene(&_scene, _bitmap,
+            StrToInt(AntiAliasingXEdit->Text), StrToInt(AntiAliasingYEdit->Text), UpdateProgress, RenderingDone);
+    }
 }
 
 void __fastcall TYRTMainForm::RenderingDone(TObject *sender)
 {
     UpdateWindow();
-    ProgressLabel->Caption = "DONE";
+    RenderButton->Caption = RenderButtonCaption;
+    RenderButton->Cancel = false;
+    ProgressBar->Position = ProgressBar->Max;
     MessageBeep(MB_OK);
+    _isRendering = false;
 }
 
 void TYRTMainForm::UpdateProgress(int y)
 {
+    int progress = (y * 100.0) / SceneImage->Height;
     UpdateWindow();
-    ProgressLabel->Caption =
-        "Progress: " +
-        FloatToStrF((y * 1.0) / SceneImage->Height * 100, ffFixed, 1, 0) + "\%";
+    ProgressBar->Position = progress;
 }
 
 void TYRTMainForm::UpdateWindow(void)

@@ -5,7 +5,7 @@
 
 void TYRTEngine::RenderScene(TYRTScene *scene, Graphics::TBitmap *bitmap,
     int antiAliasingX, int antiAliasingY,
-    TYRTEngineUpdateFunc updateFunc, TNotifyEvent terminatedFunc)
+    TYRTTracerUpdateFunc updateFunc, TNotifyEvent terminatedFunc)
 {
     assert(bitmap->PixelFormat == pf24bit);
 
@@ -27,9 +27,13 @@ void TYRTEngine::RenderScene(TYRTScene *scene, Graphics::TBitmap *bitmap,
     // the .Z component is always equal to the distance of the "eye" from the screen.
     eye.Dir.Z = -eye.Start.Z;
 
-    TYRTTracer* tracer = new TYRTTracer(scene, bitmap, eye, antiAliasingX, antiAliasingY, updateFunc);
-    tracer->FreeOnTerminate = true;
-    tracer->OnTerminate = terminatedFunc;
-    tracer->Resume();
+    _tracer = new TYRTTracer(scene, bitmap, eye, antiAliasingX, antiAliasingY, updateFunc);
+    _tracer->FreeOnTerminate = true;
+    _tracer->OnTerminate = terminatedFunc;
+    _tracer->Resume();
 }
 
+void TYRTEngine::Stop()
+{
+    _tracer->Terminate();
+}

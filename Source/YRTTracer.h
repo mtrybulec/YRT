@@ -3,8 +3,9 @@
 
 #include <Graphics.hpp>
 
-#include "YRTEngine.h"
 #include "YRTScene.h"
+
+typedef void (__closure *TYRTTracerUpdateFunc) (int);
 
 class TYRTTracer : public TThread
 {
@@ -14,7 +15,7 @@ private:
     TYRTRay _eye;
     int _antiAliasingX;
     int _antiAliasingY;
-    TYRTEngineUpdateFunc _updateFunc;
+    TYRTTracerUpdateFunc _updateFunc;
     int _progress;
     void __fastcall UpdateProgress();
 protected:
@@ -22,7 +23,7 @@ protected:
 public:
     __fastcall TYRTTracer(TYRTScene *scene, Graphics::TBitmap *bitmap,
         TYRTRay eye, int antiAliasingX, int antiAliasingY,
-        TYRTEngineUpdateFunc updateFunc);
+        TYRTTracerUpdateFunc updateFunc);
 };
 
 #endif

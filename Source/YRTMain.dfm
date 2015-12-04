@@ -22,13 +22,13 @@ object YRTMainForm: TYRTMainForm
     Caption = 'TimeLabel'
     ShowAccelChar = False
   end
-  object ProgressLabel: TLabel
+  object ProgressBar: TProgressBar
     Left = 646
     Top = 459
-    Width = 67
-    Height = 13
-    Caption = 'ProgressLabel'
-    ShowAccelChar = False
+    Width = 162
+    Height = 17
+    Smooth = True
+    TabOrder = 3
   end
   object ScenePanel: TPanel
     Left = 0
@@ -53,7 +53,7 @@ object YRTMainForm: TYRTMainForm
     Top = 8
     Width = 162
     Height = 25
-    Caption = '&Render'
+    Caption = 'RenderButton'
     TabOrder = 1
     OnClick = RenderButtonClick
   end
