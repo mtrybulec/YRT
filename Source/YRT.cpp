@@ -5,7 +5,7 @@
 #pragma hdrstop
 
 USEFORM("YRTMain.cpp", YRTMainForm);
-
+//---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
     try

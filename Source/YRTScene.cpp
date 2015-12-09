@@ -203,12 +203,6 @@ TYRTShape* TYRTScene::GenerateExample_03StarShips(int width, int height)
     return result;
 }
 
-TStrings* TYRTScene::GenerateExamples()
-{
-    TStringList *examples = new TStringList;
-    return examples;
-}
-
 void TYRTScene::GetIntersection(TYRTRay *ray, TColor &color)
 {
     TYRTVector point;

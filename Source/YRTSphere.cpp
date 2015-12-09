@@ -6,7 +6,7 @@
 #pragma hdrstop
 #pragma package(smart_init)
 
-bool TYRTSphere::GetIntersection(TYRTRay *ray, TYRTVector *point, TColor *color)
+bool TYRTSphere::GetIntersection(TYRTRay *ray, TYRTVector &point, TColor &color)
 {
     TYRTVector temp = ray->Start - Center;
     float a = dot(ray->Dir, ray->Dir);
@@ -29,8 +29,8 @@ bool TYRTSphere::GetIntersection(TYRTRay *ray, TYRTVector *point, TColor *color)
         else
             t = (t1 < t2 ? t1 : t2);
 
-        *point = ray->Start + (t / (2 * a)) * ray->Dir;
-        *color = Color;
+        point = ray->Start + (t / (2 * a)) * ray->Dir;
+        color = Color;
 
         return true;
     }

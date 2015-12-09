@@ -5,7 +5,7 @@
 
 #pragma hdrstop
 
-bool TYRTTriangle::GetIntersection(TYRTRay *ray, TYRTVector *point, TColor *color)
+bool TYRTTriangle::GetIntersection(TYRTRay *ray, TYRTVector &point, TColor &color)
 {
     if (_isDegenerate)
         return false;
@@ -24,10 +24,10 @@ bool TYRTTriangle::GetIntersection(TYRTRay *ray, TYRTVector *point, TColor *colo
         return false;
 
     // The intersection point of the ray with the triangle plane:
-    *point = ray->Start + (a / b * ray->Dir);
+    point = ray->Start + (a / b * ray->Dir);
 
     // Check whether APoint is inside the triangle - get and test parametric coordinates:
-    TYRTVector w = *point - Points[0];
+    TYRTVector w = point - Points[0];
 
     float wu = dot(w, _u);
     float wv = dot(w, _v);
@@ -50,7 +50,7 @@ bool TYRTTriangle::GetIntersection(TYRTRay *ray, TYRTVector *point, TColor *colo
             return false;
     }
 
-    *color = Color;
+    color = Color;
     return true;
 }
 
