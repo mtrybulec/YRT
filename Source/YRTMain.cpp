@@ -51,10 +51,9 @@ void __fastcall TYRTMainForm::RenderButtonClick(TObject *sender)
     }
     else
     {
-        _scene.Clear();
-        // _scene.GenerateExample_01Triangles(_bitmap->Width, _bitmap->Height);
-        // _scene.GenerateExample_02Atom(_bitmap->Width, _bitmap->Height);
-        _scene.GenerateExample_03StarShips(_bitmap->Width, _bitmap->Height);
+        // _scene.SetShape(_scene.GenerateExample_01Triangles(_bitmap->Width, _bitmap->Height));
+        // _scene.SetShape(_scene.GenerateExample_02Atom(_bitmap->Width, _bitmap->Height));
+        _scene.SetShape(_scene.GenerateExample_03StarShips(_bitmap->Width, _bitmap->Height));
 
         _startTime = TDateTime::CurrentTime();
         RenderButton->Caption = "Cancel";

@@ -9,11 +9,7 @@ void TYRTEngine::RenderScene(TYRTScene *scene, Graphics::TBitmap *bitmap,
 {
     assert(bitmap->PixelFormat == pf24bit);
 
-    for (int t = 0; t < scene->GetCount(); t++)
-    {
-        TYRTShape *shape = scene->GetShape(t);
-        shape->RunPrecalculations();
-    }
+    scene->RunPrecalculations();
 
     TYRTRay eye;
 

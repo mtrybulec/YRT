@@ -8,19 +8,17 @@
 class TYRTScene
 {
 private:
-    TObjectList *_shapes;
+    TYRTShape *_shape;
 public:
-    TYRTScene(void);
     ~TYRTScene(void);
-    void Clear();
-    void GenerateExample_01Triangles(int width, int height);
-    void GenerateExample_02Atom(int width, int height);
-    void GenerateExample_03StarShip(float x, float y, float z);
-    void GenerateExample_03StarShips(int width, int height);
-    int GetCount(void);
-    TYRTShape* GetShape(int index);
-    void Move(float dx, float dy, float dz);
-    void Zoom(float factor);
+    TYRTShape* GenerateExample_01Triangles(int width, int height);
+    TYRTShape* GenerateExample_02Atom(int width, int height);
+    TYRTShape* GenerateExample_03StarShip(float x, float y, float z);
+    TYRTShape* GenerateExample_03StarShips(int width, int height);
+    TStrings* GenerateExamples();
+    void GetIntersection(TYRTRay *ray, TColor &color);
+    void RunPrecalculations(void);
+    void SetShape(TYRTShape *shape);
 };
 
 #endif

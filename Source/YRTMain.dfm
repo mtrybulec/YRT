@@ -54,6 +54,7 @@ object YRTMainForm: TYRTMainForm
     Width = 162
     Height = 25
     Caption = 'RenderButton'
+    Default = True
     TabOrder = 1
     OnClick = RenderButtonClick
   end

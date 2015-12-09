@@ -46,25 +46,9 @@ void __fastcall TYRTTracer::Execute()
                     _eye.Dir.Y = +_eye.Start.Y - y - (ay - 0.5) / _antiAliasingY;
 
                     // Get the color of the closest object in the direction of our ray:
-                    int colorMin = clBlack;
-                    float distMin = MAX_FLOAT;
+                    TColor colorMin = clBlack;
 
-                    for (int t = 0; t < _scene->GetCount(); t++)
-                    {
-                        TYRTShape *shape = _scene->GetShape(t);
-                        TYRTVector point;
-                        TColor color;
-
-                        if (shape->GetIntersection(&_eye, &point, &color))
-                        {
-                            float dist = _eye.Start.GetDistanceSqr(point);
-                            if (dist < distMin)
-                            {
-                                distMin = dist;
-                                colorMin = color;
-                            }
-                        }
-                    }
+                    _scene->GetIntersection(&_eye, colorMin);
 
                     r += (colorMin / 256) / 256;
                     g += (colorMin / 256) % 256;
