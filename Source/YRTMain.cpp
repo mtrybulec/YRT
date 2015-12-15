@@ -56,7 +56,7 @@ void __fastcall TYRTMainForm::RenderButtonClick(TObject *sender)
     }
     else
     {
-        _scene.SetShape((TYRTShape*)_scenes->Objects[_selectedSceneIndex]);
+        _scene.SetShape((TYRTShape*)_scenes->Objects[ExamplesComboBox->ItemIndex]);
 
         _startTime = TDateTime::CurrentTime();
         RenderButton->Caption = "Cancel";
