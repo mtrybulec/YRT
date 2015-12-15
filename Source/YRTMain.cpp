@@ -33,6 +33,9 @@ void __fastcall TYRTMainForm::FormCreate(TObject *sender)
 
     // Some examples use randomization to generate shapes:
     randomize();
+
+    _scenes = _scene.GenerateExamples(_bitmap->Width, _bitmap->Height);
+    _selectedSceneIndex = 0;
 }
 
 TDateTime TYRTMainForm::GetRenderTime(void)
@@ -51,8 +54,7 @@ void __fastcall TYRTMainForm::RenderButtonClick(TObject *sender)
     }
     else
     {
-        TStrings* scenes = _scene.GenerateExamples(_bitmap->Width, _bitmap->Height);
-        _scene.SetShape((TYRTShape*)scenes->Objects[2]);
+        _scene.SetShape((TYRTShape*)_scenes->Objects[_selectedSceneIndex]);
 
         _startTime = TDateTime::CurrentTime();
         RenderButton->Caption = "Cancel";

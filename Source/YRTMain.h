@@ -31,6 +31,8 @@ __published:
 private:
     TYRTEngine _engine;
     TYRTScene _scene;
+    TStrings* _scenes;
+    int _selectedSceneIndex;
     Graphics::TBitmap *_bitmap;
     TDateTime _startTime, _endTime;
     TDateTime GetRenderTime(void);
