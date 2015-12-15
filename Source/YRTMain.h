@@ -24,6 +24,8 @@ __published:
     TLabel *AntiAliasingYLabel;
     TEdit *AntiAliasingYEdit;
     TUpDown *AntiAliasingYUpDown;
+    TLabel *ExamplesLabel;
+    TComboBox *ExamplesComboBox;
     TLabel *TimeLabel;
     TProgressBar *ProgressBar;
     void __fastcall FormCreate(TObject *sender);

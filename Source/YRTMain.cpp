@@ -35,7 +35,9 @@ void __fastcall TYRTMainForm::FormCreate(TObject *sender)
     randomize();
 
     _scenes = _scene.GenerateExamples(_bitmap->Width, _bitmap->Height);
-    _selectedSceneIndex = 0;
+
+    ExamplesComboBox->Items->Assign(_scenes);
+    ExamplesComboBox->ItemIndex = 0;
 }
 
 TDateTime TYRTMainForm::GetRenderTime(void)

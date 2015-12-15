@@ -22,6 +22,14 @@ object YRTMainForm: TYRTMainForm
     Caption = 'TimeLabel'
     ShowAccelChar = False
   end
+  object ExamplesLabel: TLabel
+    Left = 646
+    Top = 144
+    Width = 45
+    Height = 13
+    Caption = '&Examples'
+    FocusControl = ExamplesComboBox
+  end
   object ProgressBar: TProgressBar
     Left = 646
     Top = 459
@@ -119,5 +127,14 @@ object YRTMainForm: TYRTMainForm
       Position = 1
       TabOrder = 3
     end
+  end
+  object ExamplesComboBox: TComboBox
+    Left = 646
+    Top = 160
+    Width = 162
+    Height = 21
+    Style = csDropDownList
+    ItemHeight = 13
+    TabOrder = 4
   end
 end
