@@ -94,7 +94,7 @@ TYRTShape* TYRTScene::GenerateExample_02Atom(int width, int height)
     return result;
 }
 
-TYRTShape* TYRTScene::GenerateExample_03StarShip(float x, float y, float z)
+TYRTShape* TYRTScene::GenerateExample_03Starship(float x, float y, float z)
 {
     TYRTGroup *result = new TYRTGroup;
     TYRTTriangle *triangle;
@@ -189,13 +189,13 @@ TYRTShape* TYRTScene::GenerateExample_03StarShip(float x, float y, float z)
     return result;
 }
 
-TYRTShape* TYRTScene::GenerateExample_03StarShips(int width, int height)
+TYRTShape* TYRTScene::GenerateExample_03Starships(int width, int height)
 {
     TYRTGroup *result = new TYRTGroup;
 
-    result->Add(GenerateExample_03StarShip(0, 0, 0));
-    result->Add(GenerateExample_03StarShip(10, 4, 1));
-    result->Add(GenerateExample_03StarShip(-1, 6, 14));
+    result->Add(GenerateExample_03Starship(0, 0, 0));
+    result->Add(GenerateExample_03Starship(10, 4, 1));
+    result->Add(GenerateExample_03Starship(-1, 6, 14));
 
     result->Zoom(30);
     result->Move(170, 150, 100);
@@ -209,7 +209,7 @@ TStrings* TYRTScene::GenerateExamples(int width, int height)
 
     result->AddObject("Triangles", GenerateExample_01Triangles(width, height));
     result->AddObject("Atom", GenerateExample_02Atom(width, height));
-    result->AddObject("Star ships", GenerateExample_03StarShips(width, height));
+    result->AddObject("Starships", GenerateExample_03Starships(width, height));
 
     return result;
 }
