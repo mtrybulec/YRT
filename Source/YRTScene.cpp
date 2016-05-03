@@ -97,7 +97,6 @@ TYRTShape* TYRTScene::GenerateExample_02Atom(int width, int height)
 TYRTShape* TYRTScene::GenerateExample_03Starship(float x, float y, float z)
 {
     float deckHeight = 0.1;
-    float epsilon = 0.01;
     TYRTGroup *result = new TYRTGroup;
     TYRTTriangle *triangle;
     TYRTSphere *sphere;
